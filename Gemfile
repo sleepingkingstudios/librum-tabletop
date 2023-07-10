@@ -10,6 +10,8 @@ gem 'librum-core',
   git:    'https://github.com/sleepingkingstudios/librum-core'
 
 group :development, :test do
+  gem 'annotate'
+
   gem 'byebug'
 
   # See https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
