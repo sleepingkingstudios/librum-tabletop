@@ -39,6 +39,8 @@ Gem::Specification.new do |gem|
     ]
   end
 
+  gem.add_dependency 'librum-core'
+
   gem.add_dependency 'pg',    '~> 1.5'
   gem.add_dependency 'rails', '~> 7.0.6'
 end
