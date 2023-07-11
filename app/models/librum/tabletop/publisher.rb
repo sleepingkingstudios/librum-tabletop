@@ -3,6 +3,10 @@
 module Librum::Tabletop
   # A publisher of game systems or materials.
   class Publisher < Librum::Tabletop::ApplicationRecord
+    ### Associations
+    has_many :game_systems,
+      dependent: :nullify
+
     ### Validations
     validates :name,
       presence:   true,
