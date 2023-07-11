@@ -57,6 +57,7 @@ Layout/ParameterAlignment:
 Metrics/BlockLength:
   Exclude:
     - config/routes.rb
+    - lib/librum/tabletop/rspec/contracts/**/*.rb
     - spec/**/*_contract*.rb
     - spec/**/*_factories.rb
     - spec/**/*_spec.rb
@@ -67,6 +68,7 @@ Metrics/MethodLength:
 
 Metrics/ModuleLength:
   Exclude:
+    - lib/librum/tabletop/rspec/contracts/**/*.rb
     - spec/**/*_contract*.rb
 
 RSpec/BeNil:
