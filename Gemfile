@@ -5,9 +5,15 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in librum-tabletop.gemspec.
 gemspec
 
+# Engines
 gem 'librum-core',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/librum-core'
+
+# Commands
+gem 'cuprum-rails',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/cuprum-rails'
 
 group :development, :test do
   gem 'annotate'
@@ -27,4 +33,8 @@ group :development, :test do
   gem 'rubocop-rspec', '~> 2.19' # https://docs.rubocop.org/rubocop-rspec/
 
   gem 'simplecov', '~> 0.21'
+end
+
+group :development do
+  gem 'sleeping_king_studios-tasks', '~> 0.4', '>= 0.4.1'
 end

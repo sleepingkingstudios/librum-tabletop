@@ -1,0 +1,4 @@
+en:
+  errors:
+    messages:
+      kebab_case: 'must be in kebab-case'
