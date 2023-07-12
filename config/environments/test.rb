@@ -15,4 +15,7 @@ Rails.application.configure do
   config.action_dispatch.show_exceptions = false
 
   config.factory_bot.definition_file_paths = ['spec/support/factories']
+
+  # Configure user model.
+  config.user_model = 'Spec::Support::User'
 end
