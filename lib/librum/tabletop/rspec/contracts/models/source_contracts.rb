@@ -107,5 +107,163 @@ module Librum::Tabletop::RSpec::Contracts::Models
         end
       end
     end
+
+    # Asserts that the model matches the expected publication methods.
+    module ShouldBeAPublicationContract
+      extend RSpec::SleepingKingStudios::Contract
+
+      contract do |type:, **options|
+        include Librum::Tabletop::RSpec::Contracts::Models::SourceContracts
+
+        options[:game_system_ids] ||= Array.new(2) { SecureRandom.uuid }
+        options[:publisher_ids]   ||= Array.new(2) { SecureRandom.uuid }
+
+        include_contract('should be a source', type: type, **options)
+
+        ### Associations
+        include_contract 'should belong to',
+          :game_setting,
+          association: -> { FactoryBot.create(:game_setting, :with_publisher) }
+        include_contract 'should belong to',
+          :game_system,
+          association: -> { FactoryBot.create(:game_system, :with_publisher) }
+        include_contract 'should belong to',
+          :publisher
+
+        include_contract 'should define data property',
+          :legacy,
+          predicate: true
+        include_contract 'should define data property',
+          :official,
+          predicate: true
+        include_contract 'should define data property',
+          :playtest,
+          predicate: true
+
+        describe '#homebrew?' do
+          it { expect(subject.homebrew?).to be false }
+        end
+
+        describe '#metadata' do
+          let(:expected) do
+            {
+              'homebrew' => false,
+              'legacy'   => subject.legacy?,
+              'official' => subject.official?,
+              'playtest' => subject.playtest?
+            }
+          end
+
+          context 'when the source is a legacy source' do
+            let(:attributes) do
+              attributes = super()
+              data       = attributes.fetch(:data, {}).merge(legacy: true)
+
+              attributes.merge(data: data)
+            end
+
+            it { expect(subject.metadata).to be == expected }
+          end
+
+          context 'when the source is an official source' do
+            let(:attributes) do
+              attributes = super()
+              data       = attributes.fetch(:data, {}).merge(official: true)
+
+              attributes.merge(data: data)
+            end
+
+            it { expect(subject.metadata).to be == expected }
+          end
+
+          context 'when the source is a playtest source' do
+            let(:attributes) do
+              attributes = super()
+              data       = attributes.fetch(:data, {}).merge(playtest: true)
+
+              attributes.merge(data: data)
+            end
+
+            it { expect(subject.metadata).to be == expected }
+          end
+        end
+
+        describe '#valid?' do
+          let(:attributes) do
+            super().merge(
+              game_system: game_system,
+              publisher:   publisher
+            )
+          end
+          let(:factory_name) do
+            described_class.name.split('::').last.underscore.intern
+          end
+          let(:publisher) do
+            FactoryBot.create(
+              :publisher,
+              id: options[:publisher_ids].first
+            )
+          end
+          let(:other_publisher) do
+            FactoryBot.create(
+              :publisher,
+              id: options[:publisher_ids].last
+            )
+          end
+          let(:game_system) do
+            FactoryBot.create(
+              :game_system,
+              id:        options[:game_system_ids].first,
+              publisher: publisher
+            )
+          end
+          let(:other_game_system) do
+            FactoryBot.create(
+              :game_system,
+              id:        options[:game_system_ids].last,
+              publisher: other_publisher
+            )
+          end
+
+          before(:example) do
+            publisher.save!
+            other_publisher.save!
+
+            game_system.save!
+            other_game_system.save!
+          end
+
+          include_contract 'should validate the presence of',
+            :game_system,
+            message: 'must exist'
+
+          include_contract 'should validate the presence of',
+            :publisher,
+            message: 'must exist'
+
+          context 'with a game system and publisher' do
+            include_contract 'should validate the scoped uniqueness of',
+              :name,
+              scope:      {
+                game_system_id: options[:game_system_ids],
+                publisher_id:   options[:publisher_ids]
+              },
+              attributes: lambda {
+                FactoryBot.attributes_for(factory_name)
+              }
+
+            include_contract 'should validate the scoped uniqueness of',
+              :slug,
+              scope:      { game_system_id: options[:game_system_ids] },
+              attributes: lambda {
+                FactoryBot.attributes_for(
+                  factory_name,
+                  publisher_id: publisher.id
+                )
+              }
+          end
+        end
+      end
+    end
   end
 end
