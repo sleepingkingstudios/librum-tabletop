@@ -16,11 +16,19 @@ FactoryBot.define do
     playtest { false }
 
     trait :with_game_setting do
-      association :game_setting, publisher: (publisher || create(:publisher))
+      # :nocov:
+      game_setting do
+        association :game_setting, publisher: (publisher || create(:publisher))
+      end
+      # :nocov:
     end
 
     trait :with_game_system do
-      association :game_system, publisher: (publisher || create(:publisher))
+      # :nocov:
+      game_system do
+        association :game_system, publisher: (publisher || create(:publisher))
+      end
+      # :nocov:
     end
 
     trait :with_publisher do

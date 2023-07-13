@@ -65,6 +65,7 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - db/migrate/*
+    - spec/support/migrate/*
 
 Metrics/ModuleLength:
   Exclude:

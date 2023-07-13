@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spec::Support
-  class User < Librum::Core::ApplicationRecord
+  class User < Librum::Tabletop::ApplicationRecord
     include Librum::Tabletop::HomebrewUser
 
     self.table_name = 'users'
