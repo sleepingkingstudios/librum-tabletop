@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreatePublishers < ActiveRecord::Migration[7.0]
+class CreateLibrumTabletopPublishers < ActiveRecord::Migration[7.0]
   def change
     enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
 
