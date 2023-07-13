@@ -75,9 +75,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_13_095426) do
     t.uuid "user_id"
     t.index ["game_setting_id"], name: "index_librum_tabletop_sources_on_game_setting_id"
     t.index ["game_system_id"], name: "index_librum_tabletop_sources_on_game_system_id"
-    t.index ["name", "game_system_id", "publisher_id"], name: "index_sources_on_name_and_game_system_id_and_publisher_id", unique: true
+    t.index ["name", "game_system_id", "publisher_id"], name: "index_tabletop_sources_on_name_and_system_and_publisher_ids", unique: true
     t.index ["publisher_id"], name: "index_librum_tabletop_sources_on_publisher_id"
-    t.index ["slug", "game_system_id"], name: "index_sources_on_slug_and_game_system_id", unique: true
+    t.index ["slug", "game_system_id"], name: "index_tabletop_sources_on_slug_and_game_system_id", unique: true
     t.index ["user_id"], name: "index_librum_tabletop_sources_on_user_id"
   end
 

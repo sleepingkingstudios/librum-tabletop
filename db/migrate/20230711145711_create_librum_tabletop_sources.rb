@@ -33,11 +33,11 @@ class CreateLibrumTabletopSources < ActiveRecord::Migration[7.0]
 
     add_index :librum_tabletop_sources,
       %i[name game_system_id publisher_id],
-      name:   'index_sources_on_name_and_game_system_id_and_publisher_id',
+      name:   'index_tabletop_sources_on_name_and_system_and_publisher_ids',
       unique: true
     add_index :librum_tabletop_sources,
       %i[slug game_system_id],
-      name:   'index_sources_on_slug_and_game_system_id',
+      name:   'index_tabletop_sources_on_slug_and_game_system_id',
       unique: true
   end
 end
