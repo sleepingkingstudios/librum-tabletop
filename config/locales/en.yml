@@ -2,3 +2,11 @@ en:
   errors:
     messages:
       kebab_case: 'must be in kebab-case'
+  librum:
+    tabletop:
+      errors:
+        models:
+          sources:
+            homebrew:
+              invalid_name: 'must match user name'
+              invalid_slug: 'must match user slug'

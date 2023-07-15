@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateGameSystems < ActiveRecord::Migration[7.0]
+class CreateLibrumTabletopGameSystems < ActiveRecord::Migration[7.0]
   def change
     create_table :librum_tabletop_game_systems, id: :uuid do |t|
       t.string :name,    null: false, default: ''
