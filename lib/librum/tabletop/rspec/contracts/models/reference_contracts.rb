@@ -56,7 +56,7 @@ module Librum::Tabletop::RSpec::Contracts::Models
           end
           let(:book_source) do
             FactoryBot.create(
-              :book,
+              options.fetch(:book_factory_name, :book),
               :with_game_system,
               :with_publisher,
               id: options[:source_ids].first
@@ -64,7 +64,7 @@ module Librum::Tabletop::RSpec::Contracts::Models
           end
           let(:website_source) do
             FactoryBot.create(
-              :website,
+              options.fetch(:website_factory_name, :website),
               :with_game_system,
               :with_publisher,
               id: options[:source_ids].last

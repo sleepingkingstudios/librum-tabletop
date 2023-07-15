@@ -4,7 +4,7 @@ require 'support/user'
 
 FactoryBot.define do
   factory :user,
-    class:  'Spec::Support::User',
+    class:  Librum::Tabletop::Engine.config.user_model,
     parent: :source \
   do
     id { SecureRandom.uuid }
