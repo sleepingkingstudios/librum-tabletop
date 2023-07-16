@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/view/components/link'
-require 'librum/core/view/components/resources/table'
-
 module Librum::Tabletop::View::Components::Publishers
   # Renders a table of Publisher records.
   class Table < Librum::Core::View::Components::Resources::Table

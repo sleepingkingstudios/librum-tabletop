@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/core/rspec/contracts/routing_contracts'
-
 RSpec.describe "#{Librum::Tabletop::View::PublishersController} routes",
   type: :routing \
 do

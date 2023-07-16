@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/rspec/factories/shared_factories'
-
 module Librum::Tabletop::RSpec::Factories
   # Shared RSpec factories for GameSetting models.
   module GameSettingFactories

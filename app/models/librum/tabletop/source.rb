@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/models/data_properties'
-
 module Librum::Tabletop
   # An abstract source for game materials.
   class Source < ApplicationRecord

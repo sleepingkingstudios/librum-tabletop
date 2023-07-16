@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/view/components/data_list'
-
 module Librum::Tabletop::View::Components::Publishers
   # Renders a single publisher record.
   class Block < ViewComponent::Base

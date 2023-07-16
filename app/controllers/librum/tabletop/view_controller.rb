@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/actions/view/middleware/page_navigation'
-
 module Librum::Tabletop
   # Abstract base class for HTML controllers.
   class ViewController < Librum::Core::ViewController
