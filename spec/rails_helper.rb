@@ -29,6 +29,11 @@ rescue ActiveRecord::PendingMigrationError => e
   # :nocov:
 end
 
+# Mount the engine routes in the test application.
+Rails.application.routes.draw do
+  mount Librum::Tabletop::Engine, at: '/'
+end
+
 Librum::Tabletop::RSpec::Factories.define_factories
 
 RSpec.configure do |config|

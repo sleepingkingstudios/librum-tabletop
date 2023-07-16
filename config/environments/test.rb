@@ -16,6 +16,25 @@ Rails.application.configure do
 
   config.factory_bot.definition_file_paths = ['spec/support/factories']
 
+  # Configure view controllers.
+  config.base_url = '/tabletop'
+
+  config.page_breadcrumbs = [
+    {
+      label: 'Home',
+      url:   '/'
+    }.freeze,
+    {
+      label: 'Tabletop',
+      url:   '/tabletop'
+    }.freeze
+  ].freeze
+
+  config.page_navigation = {
+    icon:  'circle-radiation',
+    label: 'Home'
+  }.freeze
+
   # Configure user model.
   config.user_model = 'Spec::Support::User'
 end
