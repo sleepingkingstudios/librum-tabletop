@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/rspec/factories/shared_factories'
-
 module Librum::Tabletop::RSpec::Factories::Sources
   # Shared RSpec factories for Sources::Book models.
   module BookFactories

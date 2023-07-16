@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/core/rspec/contracts/model_contracts'
-
 RSpec.describe Librum::Tabletop::Publisher, type: :model do
   include Librum::Core::RSpec::Contracts::ModelContracts
 

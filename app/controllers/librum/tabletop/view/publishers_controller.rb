@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/actions/index'
-require 'librum/core/actions/show'
-require 'librum/core/actions/view/middleware/resource_breadcrumbs'
-require 'librum/core/resources/view_resource'
-require 'librum/core/responders/html/resource_responder'
-
 module Librum::Tabletop::View
   # View controller for managing Publisher entities.
   class PublishersController < Librum::Tabletop::ViewController

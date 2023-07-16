@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/core/rspec/contracts/controller_contracts'
-
 RSpec.describe Librum::Tabletop::View::PublishersController,
   type: :controller \
 do
