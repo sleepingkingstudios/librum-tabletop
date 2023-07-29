@@ -30,6 +30,7 @@ module Librum::Tabletop::View
           ],
           resource_class:       Librum::Tabletop::Publisher,
           block_component:      components::Block,
+          form_component:       components::Form,
           table_component:      components::Table
         )
     end
@@ -41,8 +42,12 @@ module Librum::Tabletop::View
 
     responder :html, Librum::Core::Responders::Html::ResourceResponder
 
-    action :index, Librum::Core::Actions::Index
-
-    action :show,  Librum::Core::Actions::Show, member: true
+    action :create,  Librum::Core::Actions::Create
+    action :destroy, Librum::Core::Actions::Destroy, member: true
+    action :edit,    Librum::Core::Actions::Show,    member: true
+    action :index,   Librum::Core::Actions::Index
+    action :new,     Cuprum::Rails::Action
+    action :show,    Librum::Core::Actions::Show,    member: true
+    action :update,  Librum::Core::Actions::Update,  member: true
   end
 end
