@@ -45,6 +45,9 @@ do
   end
 
   describe '#call' do
+    let(:mock_actions) do
+      Librum::Core::View::Components::IdentityComponent.new('[actions]')
+    end
     let(:rendered) { render_inline(table) }
     let(:snapshot) do
       <<~HTML
@@ -54,16 +57,24 @@ do
               <th>Name</th>
 
               <th>Website</th>
+
+              <th> </th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td colspan="2">There are no publishers matching the criteria.</td>
+              <td colspan="3">There are no publishers matching the criteria.</td>
             </tr>
           </tbody>
         </table>
       HTML
+    end
+
+    before(:example) do
+      allow(Librum::Core::View::Components::Resources::TableActions)
+        .to receive(:new)
+        .and_return(mock_actions)
     end
 
     it { expect(rendered).to match_snapshot(snapshot) }
@@ -77,6 +88,8 @@ do
                 <th>Name</th>
 
                 <th>Website</th>
+
+                <th> </th>
               </tr>
             </thead>
 
@@ -99,6 +112,10 @@ do
                     </span>
                   </a>
                 </td>
+
+                <td>
+                  [actions]
+                </td>
               </tr>
 
               <tr>
@@ -111,6 +128,10 @@ do
                 <td>
                   —
                 </td>
+
+                <td>
+                  [actions]
+                </td>
               </tr>
 
               <tr>
@@ -122,6 +143,10 @@ do
 
                 <td>
                   —
+                </td>
+
+                <td>
+                  [actions]
                 </td>
               </tr>
             </tbody>

@@ -9,6 +9,5 @@ do
 
   include_contract 'should route to view resource',
     'publishers',
-    controller: 'librum/tabletop/view/publishers',
-    only:       %i[index show]
+    controller: 'librum/tabletop/view/publishers'
 end

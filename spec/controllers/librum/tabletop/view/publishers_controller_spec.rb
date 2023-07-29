@@ -62,6 +62,11 @@ do
         .to be Librum::Tabletop::View::Components::Publishers::Block
     end
 
+    it 'should define the form component' do
+      expect(resource.form_component)
+        .to be Librum::Tabletop::View::Components::Publishers::Form
+    end
+
     it 'should define the table component' do
       expect(resource.table_component)
         .to be Librum::Tabletop::View::Components::Publishers::Table
@@ -77,12 +82,37 @@ do
   end
 
   include_contract 'should define action',
+    :create,
+    Librum::Core::Actions::Create,
+    member: false
+
+  include_contract 'should define action',
+    :destroy,
+    Librum::Core::Actions::Destroy,
+    member: true
+
+  include_contract 'should define action',
+    :edit,
+    Librum::Core::Actions::Show,
+    member: true
+
+  include_contract 'should define action',
     :index,
     Librum::Core::Actions::Index,
     member: false
 
   include_contract 'should define action',
+    :new,
+    Cuprum::Rails::Action,
+    member: false
+
+  include_contract 'should define action',
     :show,
     Librum::Core::Actions::Show,
+    member: true
+
+  include_contract 'should define action',
+    :update,
+    Librum::Core::Actions::Update,
     member: true
 end
